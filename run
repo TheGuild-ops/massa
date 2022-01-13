@@ -9,6 +9,7 @@ systemctl stop massad.service
 rm massa -r
 git clone --branch testnet https://github.com/massalabs/massa.git
 cd /root/source/massa/massa-node/
+rustup default nightly-2021-12-04
 RUST_BACKTRACE=full cargo run --release |& tee logs.txt
 cp /root/source/massa/target/release/massa-node /root/massa/massa-node/
 systemctl start massad.service
