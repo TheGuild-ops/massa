@@ -4,10 +4,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 mkdir source 
 cd source 
+systemctl stop massad.service
 git clone --branch testnet https://github.com/massalabs/massa.git
 cd /root/source/massa/massa-node/
 RUST_BACKTRACE=full cargo run --release |& tee logs.txt
+cp /root/source/massa/target/release/massa-node /root/massa/massa-node/
+systemctl start massad.service
 cd /root/source/massa/massa-client/
 cargo run --release
 cp /root/source/massa/target/release/massa-client /root/massa/massa-client/
-cp /root/source/massa/target/release/massa-node /root/massa/massa-node/
