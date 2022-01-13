@@ -5,7 +5,9 @@ source $HOME/.cargo/env
 mkdir source 
 cd source 
 git clone --branch testnet https://github.com/massalabs/massa.git
-cd /root/souece/massa/massa-node/
+cd /root/source/massa/massa-node/
 RUST_BACKTRACE=full cargo run --release |& tee logs.txt
-cd /root/souece/massa/massa-client/
+cd /root/source/massa/massa-client/
 cargo run --release
+cp /root/source/massa/target/release/massa-client /root/massa/massa-client/
+cp /root/source/massa/target/release/massa-node /root/massa/massa-node/
