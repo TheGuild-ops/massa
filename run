@@ -2,9 +2,11 @@ apt-get update && apt-get upgrade -y
 sudo apt install pkg-config curl git build-essential libssl-dev
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
+rustup toolchain install nightly
 mkdir source 
 cd source 
 systemctl stop massad.service
+rm massa -r
 git clone --branch testnet https://github.com/massalabs/massa.git
 cd /root/source/massa/massa-node/
 RUST_BACKTRACE=full cargo run --release |& tee logs.txt
